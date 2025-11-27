@@ -30,6 +30,7 @@ public class CoommonConfiguration {
     public ChatMemory chatMemoryRepository() {
         return new InMemoryChatMemory();
     }
+
     @Bean("ollamaChatModel1")
     public ChatClient chatClient(OllamaChatModel ollamaChatModel,@Qualifier("chatMemoryRepository") ChatMemory InMemoryChatMemory) {
         return ChatClient.builder(ollamaChatModel)
