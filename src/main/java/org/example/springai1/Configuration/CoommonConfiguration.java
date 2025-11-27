@@ -26,14 +26,12 @@ import java.util.List;
 
 @Configuration
 public class CoommonConfiguration {
-    @Autowired
-
     @Bean
     public ChatMemory chatMemoryRepository() {
         return new InMemoryChatMemory();
     }
     @Bean("ollamaChatModel1")
-    public ChatClient chatClient(OllamaChatModel ollamaChatModel, ChatMemory InMemoryChatMemory) {
+    public ChatClient chatClient(OllamaChatModel ollamaChatModel,@Qualifier("chatMemoryRepository") ChatMemory InMemoryChatMemory) {
         return ChatClient.builder(ollamaChatModel)
                 .defaultSystem("你叫唐明迪")
                 .defaultAdvisors(new SimpleLoggerAdvisor(),
@@ -42,7 +40,7 @@ public class CoommonConfiguration {
     }
 
     @Bean("gameChatClient")
-    public ChatClient gameChatClient(OpenAiChatModel openAiChatModel, ChatMemory InMemoryChatMemory){
+    public ChatClient gameChatClient(OpenAiChatModel openAiChatModel, @Qualifier("chatMemoryRepository") ChatMemory InMemoryChatMemory){
        return ChatClient.builder(openAiChatModel)
                 .defaultSystem(SystemConstant.prompt)
                 .defaultAdvisors(new SimpleLoggerAdvisor(),
@@ -50,7 +48,7 @@ public class CoommonConfiguration {
                 .build();
     }
     @Bean("serviceChatClient")
-    public ChatClient serviceChatClient(OpenAiChatModel openAiChatModel, ChatMemory InMemoryChatMemory, CourseTool courseTool, WeatherTool weatherTool){
+    public ChatClient serviceChatClient(OpenAiChatModel openAiChatModel,@Qualifier("chatMemoryRepository") ChatMemory InMemoryChatMemory, CourseTool courseTool, WeatherTool weatherTool){
         return ChatClient.builder(openAiChatModel)
                 .defaultSystem(SystemConstant.ServicePrompt)
                 .defaultAdvisors(new SimpleLoggerAdvisor(),
