@@ -1,4 +1,4 @@
-package org.example.springai1.RAG;
+package org.example.springai1.RAG和Embedding;
 
 public class RAGMean {
 

@@ -1,4 +1,4 @@
-package org.example.springai1.RAG;
+package org.example.springai1.RAG和Embedding;
 
 public class Document详解 {
     /*Document 类在 Spring AI 中主要用于表示一段文本及其相关的元数据，常用于向量数据库、检索增强生成（RAG）等场景。它是文本分割、存储、检索等流程的核心数据结构。

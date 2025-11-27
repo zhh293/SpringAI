@@ -1,7 +1,4 @@
-package org.example.springai1.RAG;
-
-import org.springframework.core.io.Resource;
-import org.springframework.web.multipart.MultipartFile;
+package org.example.springai1.RAG和Embedding;
 
 public class 读取器 {
 
